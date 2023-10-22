@@ -25,31 +25,31 @@ if (isParceSuccess && arrayLength > 2)
     {
         Console.Write($"{numbers[i]}  ");
     }
-    Console.WriteLine();
-    string name = null;
+    int previousNumber = numbers[0];
+    int count = 0;
+    bool isCopy = false;
     for (int i = 0; i < arrayLength; i++)
     {
-        string numbersString = numbers[i].ToString();
-        if (numbersString == name)
+
+        if (previousNumber != numbers[i] && count > 1)
         {
-            continue;
+            count = 1;
         }
-        else
+        else if (previousNumber == numbers[i])
         {
-            name = numbersString;
-            int count = 0;
-            for (int j = 0; j < arrayLength; j++)
-            {
-                if ((numbers[j] == numbers[i]))
-                {
-                    count++;
-                }
-            }
-            if (count > 1)
-            {
-                Console.WriteLine($"Число {numbers[i]} повторяется {count} раз(а) ");
-            }
+            count++;
         }
+
+        if ((arrayLength - 1 == i || numbers[i] != numbers[i + 1]) && count > 1)
+        {
+            Console.WriteLine($"\nЧисло {previousNumber} повторяется {count} раз(а)");
+            isCopy = true;
+        }
+        previousNumber = numbers[i];
+    }
+    if (!isCopy)
+    {
+        Console.WriteLine("\nВсе числа в массиве уникальны.");
     }
 }
 else
