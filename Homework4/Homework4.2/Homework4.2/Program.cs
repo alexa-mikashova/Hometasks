@@ -16,7 +16,7 @@ if (isParceSuccess && arrayLength > 2)
         {
             max = numbers[i];
         }
-        else
+        else if (numbers[i] < min)
         {
             min = numbers[i];
         }
