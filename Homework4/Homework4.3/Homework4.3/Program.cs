@@ -30,21 +30,26 @@ if (isParceSuccess && arrayLength > 2)
     bool isCopy = false;
     for (int i = 0; i < arrayLength; i++)
     {
-        if (previousNumber != numbers[i] && count > 1)
-        {
-            count = 1;
-        }
-        else if (previousNumber == numbers[i])
+        if (previousNumber == numbers[i])
         {
             count++;
         }
-
-        if ((arrayLength - 1 == i || numbers[i] != numbers[i + 1]) && count > 1)
+        else
         {
-            Console.WriteLine($"\nЧисло {previousNumber} повторяется {count} раз(а)");
-            isCopy = true;
+            if (count > 1)
+            {
+                Console.WriteLine($"\nЧисло {previousNumber} повторяется {count} раз(а)");
+                isCopy = true;
+                count = 1;
+            }
+
+            previousNumber = numbers[i];
         }
-        previousNumber = numbers[i];
+    }
+    if (count > 1)
+    {
+        Console.WriteLine($"\nЧисло {previousNumber} повторяется {count} раз(а)");
+        isCopy = true;
     }
     if (!isCopy)
     {
