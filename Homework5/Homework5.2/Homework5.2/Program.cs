@@ -12,10 +12,21 @@ else
 {
     int firstHIndex = test.IndexOf("h");
     int lastHIndex = test.LastIndexOf("h");
-    string replacedString = test.Substring(firstHIndex + 1, lastHIndex-firstHIndex-1);
-    Console.WriteLine(replacedString.Replace("h", "H"));
-    test = test.Remove(firstHIndex + 1, lastHIndex - firstHIndex - 1);
-    test = test.Insert(firstHIndex + 1, replacedString.Replace("h", "H"));
-    Console.WriteLine($"Преобразованная строка: '{test}'");
+    if (lastHIndex - firstHIndex > 1)
+
+    {
+        for (int i = firstHIndex + 1; i < lastHIndex; i++)
+        {
+            if (test[i] == 'h')
+            {
+                test = test.Remove(i, 1).Insert(i, "H");
+            }
+        }
+        Console.WriteLine($"Преобразованная строка: {test}");
+    }
+    else
+    {
+        Console.WriteLine("В введённой строке заменить нечего.");
+    }
 }
 
