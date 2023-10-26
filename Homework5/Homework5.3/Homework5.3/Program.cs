@@ -1,84 +1,44 @@
 ﻿Console.Write("Введите строку: ");
 string text = Console.ReadLine();
-Console.Write("Введите шаг  для шифрования/дешифрования: ");
+Console.Write("Введите положительный шаг для шифрования или отрицательный шаг для дешифрования: ");
 int step = int.Parse(Console.ReadLine());
 if (!string.IsNullOrWhiteSpace(text))
 {
-    string lowerCaseText = text.ToLower();
-    string alphRu = "абвгдеёжзийклмнопрстуфхцчшщъьэюя";
+    text = text.ToLower();
     string alphEn = "abcdefghijklmnopqrstuvwxyz";
-    string alphCheck = alphEn;
-    for (int i = 0; i < lowerCaseText.Length; i++)
+    string alphRu = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    string result = "";
+    foreach (char symbol in text)
     {
-        if (alphEn.IndexOf(lowerCaseText[i]) < 0)
+        if (alphEn.Contains(symbol))
         {
-            alphCheck = alphRu;
-            break;
+            int index = alphEn.IndexOf(symbol);
+            int newIndex = (index + step + alphEn.Length) % alphEn.Length;
+            result += alphEn[newIndex];
         }
-    }
-
-    char[] chars = lowerCaseText.ToCharArray();
-    char[] charsAlph = alphCheck.ToCharArray();
-    int numberOfSymbol = 0;
-    for (int i = 0; i < chars.Length; i++)
-    {
-        for (int j = 0; j < charsAlph.Length; j++)
+        else if (alphRu.Contains(symbol))
         {
-            if (chars[i] == charsAlph[j])
-            {
-                numberOfSymbol = j;
-                break;
-            }
-        }
-        if (numberOfSymbol + step < charsAlph.Length && chars[i] != ' ')
-        {
-            chars[i] = charsAlph[numberOfSymbol + step];
-        }
-        else if (chars[i] == ' ')
-        {
-            chars[i] = ' ';
+            int index = alphRu.IndexOf(symbol);
+            int newIndex = (index + step + alphRu.Length) % alphRu.Length;
+            result += alphRu[newIndex];
         }
         else
         {
-            numberOfSymbol = numberOfSymbol - charsAlph.Length;
-            chars[i] = charsAlph[numberOfSymbol + step];
+            result += symbol;
         }
     }
 
-    string encryptedString = string.Concat(chars);
-    Console.WriteLine($"Зашифрованная строка: {encryptedString}");
-    for (int i = 0; i < chars.Length; i++)
+    if (step >= 0)
     {
-        for (int j = 0; j < charsAlph.Length; j++)
-        {
-            if (chars[i] == charsAlph[j])
-            {
-                numberOfSymbol = j;
-                break;
-            }
-        }
-        if (numberOfSymbol - step >= 0 && chars[i] != ' ')
-        {
-            chars[i] = charsAlph[numberOfSymbol - step];
-        }
-        else if (chars[i] == ' ')
-        {
-            chars[i] = ' ';
-        }
-        else
-        {
-            numberOfSymbol = alphCheck.Length - (step - numberOfSymbol);
-            chars[i] = charsAlph[numberOfSymbol];
-        }
+        Console.WriteLine($"Зашифрованная строка: {result}");
     }
-
-    string decryptedString = string.Concat(chars);
-    Console.WriteLine($"Расшифрованная строка: {decryptedString}");
+    else
+    {
+        Console.WriteLine($"Расшифрованная строка: {result}");
+    }
 }
 else
 {
     Console.WriteLine("Введена пустая строка или строка пробелов!");
 }
-
-
 
