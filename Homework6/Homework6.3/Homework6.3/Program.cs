@@ -14,9 +14,9 @@ do
 }
 while (!isParceSuccessOne || year < 1900 || year > 2023);
 Car car = new(type, color, year);
-car.CarStarting();
-car.TurningOffTheCar();
+Console.WriteLine(car.CarStarting());
+Console.WriteLine(car.TurningOffTheCar());
 car.CarType();
 car.CarColor();
 car.CarYear();
-car.CarInformation();
+Console.WriteLine(car.CarInformation());

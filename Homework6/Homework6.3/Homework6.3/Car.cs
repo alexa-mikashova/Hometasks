@@ -11,13 +11,13 @@
             _type = type;
             _year = year;
         }
-        public void CarStarting()
+        public string CarStarting()
         {
-            Console.WriteLine("Автомобиль заведён");
+            return "Автомобиль заведён";
         }
-        public void TurningOffTheCar()
+        public string TurningOffTheCar()
         {
-            Console.WriteLine("Автомобиль заглушён");
+            return "Автомобиль заглушён";
         }
         public void CarColor()
         {
@@ -31,9 +31,9 @@
         {
             _year = 2006;
         }
-        public void CarInformation()
+        public string CarInformation()
         {
-            Console.WriteLine($"Автомобиль {_type} {_color} цвета {_year} года выпуска.");
+            return $"Автомобиль {_type} {_color} цвета {_year} года выпуска";
         }
     }
 }
