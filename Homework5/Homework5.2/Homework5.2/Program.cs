@@ -10,23 +10,11 @@ else if (!test.Contains("h"))
 }
 else
 {
-    int firstHIndex = test.IndexOf("h");
-    int lastHIndex = test.LastIndexOf("h");
-    if (lastHIndex - firstHIndex > 1)
-
-    {
-        for (int i = firstHIndex + 1; i < lastHIndex; i++)
-        {
-            if (test[i] == 'h')
-            {
-                test = test.Remove(i, 1).Insert(i, "H");
-            }
-        }
-        Console.WriteLine($"Преобразованная строка: {test}");
-    }
-    else
-    {
-        Console.WriteLine("В введённой строке заменить нечего.");
-    }
+    string rezult = test.Replace('h', 'H');
+    int firstHIndex = rezult.IndexOf("H");
+    int lastHIndex = rezult.LastIndexOf("H");
+    char[] rezultTest = rezult.ToCharArray();
+    rezultTest[firstHIndex] = 'h';
+    rezultTest[lastHIndex] = 'h';
+    Console.WriteLine(new string(rezultTest));
 }
-
