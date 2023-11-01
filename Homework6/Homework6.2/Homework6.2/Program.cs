@@ -30,16 +30,24 @@ Homework6._2.Math math = new();
 switch (actionSelection)
 {
     case 0:
-        math.Add(firstNumber, secondNumber);
+        Console.WriteLine(math.Add(firstNumber, secondNumber));
         break;
     case 1:
-        math.Subtract(firstNumber, secondNumber);
+        Console.WriteLine(math.Subtract(firstNumber, secondNumber));
         break;
     case 2:
-        math.Multiply(firstNumber, secondNumber);
+        Console.WriteLine(math.Multiply(firstNumber, secondNumber));
         break;
     case 3:
-        math.Divide(firstNumber, secondNumber);
+        if (secondNumber != 0)
+        {
+            Console.WriteLine(math.Divide(firstNumber, secondNumber));
+
+        }
+        else
+        {
+            Console.WriteLine("На нуль делить нельзя!");
+        }
         break;
 }
 

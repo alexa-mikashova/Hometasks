@@ -2,32 +2,22 @@
 {
     public class Math
     {
-        public void Add(double firstNumber, double secondNumber)
+        public double Add(double firstNumber, double secondNumber)
         {
-            double sum = firstNumber + secondNumber;
-            Console.WriteLine($"{firstNumber} + {secondNumber} = {sum}");
+            return firstNumber + secondNumber;
         }
-        public void Subtract(double firstNumber, double secondNumber)
+        public double Subtract(double firstNumber, double secondNumber)
         {
-            double difference = firstNumber - secondNumber;
-            Console.WriteLine($"{firstNumber} - {secondNumber} = {difference}");
+            return firstNumber - secondNumber;
         }
-        public void Multiply(double firstNumber, double secondNumber)
+        public double Multiply(double firstNumber, double secondNumber)
         {
-            double product = firstNumber * secondNumber;
-            Console.WriteLine($"{firstNumber} * {secondNumber} = {product}");
+            return firstNumber * secondNumber;
         }
-        public void Divide(double firstNumber, double secondNumber)
+        public double Divide(double firstNumber, double secondNumber)
         {
-            if (secondNumber != 0)
-            {
-                double quotient = firstNumber / secondNumber;
-                Console.WriteLine($"{firstNumber} : {secondNumber} = {quotient}");
-            }
-            else
-            {
-                Console.WriteLine("Делить на нуль нельзя!");
-            }
+            return firstNumber / secondNumber;
+
         }
     }
 }
