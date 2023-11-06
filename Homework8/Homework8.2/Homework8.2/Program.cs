@@ -1,0 +1,11 @@
+﻿using Homework8._2;
+Bus bus = new Bus();
+bus.BoardingPassengers("Лисичкин");
+bus.BoardingPassengers("Огуркин", "Петров", "Иванов");
+Console.WriteLine($"В автобус на остановке сели: {string.Join(", ", bus.passagers)}");
+bus.PassengerDisembarkation("Огуркин", "Петров");
+Console.WriteLine($"После остановки в автобусе остались: {string.Join(", ", bus.passagers)}");
+Console.WriteLine(bus.SpeedIncrease(30));
+Console.WriteLine(bus.SpeedIncrease(3));
+Console.WriteLine(bus.SpeedReduction(5));
+Console.WriteLine(bus.SpeedReduction(100));
