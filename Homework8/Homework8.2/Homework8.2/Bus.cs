@@ -5,11 +5,11 @@
         private int MaxNumberOfSeats = 3;
         private double MaxSpeed = 65;
         private double Speed = 0;
-        public List<string> passagers = new List<string>();
+        private List<string> passagers = new List<string>();
         private Dictionary<int, string> seats = new Dictionary<int, string>();
         private bool _freeSpaceFlag = true;
 
-        public void BoardingPassengers(params string[] people)
+        public string BoardingPassengers(params string[] people)
         {
             foreach (var person in people)
             {
@@ -24,9 +24,10 @@
                     break;
                 }
             }
+            return $"В автобус на остановке сели: {string.Join(", ", passagers)}";
         }
 
-        public void PassengerDisembarkation(params string[] peopleOutside)
+        public string PassengerDisembarkation(params string[] peopleOutside)
         {
             foreach (var person in peopleOutside)
             {
@@ -40,6 +41,7 @@
                     }
                 }
             }
+            return $"После остановки в автобусе остались: {string.Join(", ", passagers)}";
         }
 
         public string SpeedIncrease(double accelerate)
