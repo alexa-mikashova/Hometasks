@@ -7,14 +7,14 @@ int actionSelection = 0;
 do
 {
     Console.Write("Введите первое число: ");
-    isParceSuccessOne = double.TryParse(Console.ReadLine(), NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out firstNumber);
+    isParceSuccessOne = double.TryParse(Console.ReadLine().Replace(",", "."), CultureInfo.InvariantCulture, out firstNumber);
 }
 while (!isParceSuccessOne);
 
 do
 {
     Console.Write("Введите второе число: ");
-    isParceSuccessOne = double.TryParse(Console.ReadLine(), NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out secondNumber);
+    isParceSuccessOne = double.TryParse(Console.ReadLine().Replace(",", "."), CultureInfo.InvariantCulture, out secondNumber);
 }
 while (!isParceSuccessOne);
 
