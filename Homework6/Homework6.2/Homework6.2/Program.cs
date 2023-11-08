@@ -26,7 +26,6 @@ do
 while (!isParceSuccessOne || actionSelection < 0 || actionSelection > 3);
 
 Homework6._2.Math math = new();
-
 switch (actionSelection)
 {
     case 0:
