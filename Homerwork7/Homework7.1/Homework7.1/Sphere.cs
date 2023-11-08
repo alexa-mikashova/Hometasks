@@ -8,8 +8,9 @@ namespace Homework7._1
         private double _x = 0;
         private double _y = 0;
         private double _z = 0;
-        private double _distance;
+        private double distance;
         private string _pattern = "^[\\s]*$";
+
         public Sphere(string radius, string x, string y, string z)
         {
             if (!Regex.IsMatch(radius, _pattern))
@@ -37,24 +38,29 @@ namespace Homework7._1
         {
             return 4.0 / 3 * Math.PI * Radius * Radius * Radius;
         }
+
         public double GetSquare()
         {
             return 4 * Math.PI * Radius * Radius;
         }
+
         public string GetCenter()
         {
             return $"Координаты центра сферы: ({_x}, {_y}, {_z})";
         }
+
         public void SetCenter(double x, double y, double z)
         {
             _x = x;
             _y = y;
             _z = z;
         }
+
         public bool IsPointInside(double x, double y, double z)
         {
-            _distance = Math.Sqrt((x - _x) * (x - _x) + (y - _y) * (y - _y) + (z - _z) * (z - _z));
-            return _distance < Radius;
+            distance = Math.Sqrt((x - _x) * (x - _x) + (y - _y) * (y - _y) + (z - _z) * (z - _z));
+            Console.WriteLine(distance);
+            return distance < Radius;
         }
     }
 }
