@@ -7,7 +7,6 @@ double radius;
 double x;
 double y;
 double z;
-
 do
 {
     Console.Write("Введите радиус сферы: ");
