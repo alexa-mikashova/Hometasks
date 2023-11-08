@@ -1,42 +1,40 @@
-﻿using System.Globalization;
-using System.Text.RegularExpressions;
-namespace Homework7._1
+﻿namespace Homework7._1
 {
     public class Sphere
     {
-        public double Radius { get; set; } = 1;
         private double _x = 0;
         private double _y = 0;
         private double _z = 0;
-        private double distance;
-        private string _pattern = "^[\\s]*$";
 
-        public Sphere(string radius, string x, string y, string z)
+        public double Radius { get; set; }
+
+        public Sphere()
         {
-            if (!Regex.IsMatch(radius, _pattern))
-            {
-                Radius = double.Parse(radius, CultureInfo.InvariantCulture);
-            }
+            Radius = 1;
+            _x = 0;
+            _y = 0;
+            _z = 0;
+        }
 
-            if (!Regex.IsMatch(x, _pattern))
-            {
-                _x = double.Parse(x, CultureInfo.InvariantCulture);
-            }
+        public Sphere(double radius)
+        {
+            Radius = radius;
+            _x = 0;
+            _y = 0;
+            _z = 0;
+        }
 
-            if (!Regex.IsMatch(y, _pattern))
-            {
-                _y = double.Parse(y, CultureInfo.InvariantCulture);
-            }
-
-            if (!Regex.IsMatch(z, _pattern))
-            {
-                _z = double.Parse(z, CultureInfo.InvariantCulture);
-            }
+        public Sphere(double radius, double x, double y, double z)
+        {
+            Radius = radius;
+            _x = x;
+            _y = y;
+            _z = z;
         }
 
         public double GetVolume()
         {
-            return 4.0 / 3 * Math.PI * Radius * Radius * Radius;
+            return 4.0 / 3.0 * Math.PI * Radius * Radius * Radius;
         }
 
         public double GetSquare()
@@ -58,8 +56,7 @@ namespace Homework7._1
 
         public bool IsPointInside(double x, double y, double z)
         {
-            distance = Math.Sqrt((x - _x) * (x - _x) + (y - _y) * (y - _y) + (z - _z) * (z - _z));
-            return distance < Radius;
+            return Math.Sqrt((x - _x) * (x - _x) + (y - _y) * (y - _y) + (z - _z) * (z - _z)) < Radius;
         }
     }
 }
