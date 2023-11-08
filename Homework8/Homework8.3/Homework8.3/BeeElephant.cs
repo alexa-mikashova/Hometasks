@@ -4,6 +4,7 @@
     {
         private int _beePart;
         private int _elephantPart;
+
         public BeeElephant(int beePart, int elephantPart)
         {
             _beePart = beePart;
