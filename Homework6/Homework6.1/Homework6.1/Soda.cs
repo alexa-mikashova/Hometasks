@@ -3,6 +3,7 @@
     public class Soda
     {
         private string _taste;
+
         public Soda(string taste)
         {
             _taste = taste;
