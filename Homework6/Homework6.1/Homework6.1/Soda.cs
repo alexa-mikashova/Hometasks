@@ -7,6 +7,7 @@
         {
             _taste = taste;
         }
+
         public string SodaTaste()
         {
             if (string.IsNullOrWhiteSpace(_taste))
