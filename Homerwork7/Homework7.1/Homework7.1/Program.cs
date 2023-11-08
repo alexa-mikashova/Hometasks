@@ -35,4 +35,3 @@ do
 while (!Regex.IsMatch(z, pattern));
 
 Sphere sphere = new Sphere(radius, x, y, z);
-sphere.IsPointInside(10, 10, 10);

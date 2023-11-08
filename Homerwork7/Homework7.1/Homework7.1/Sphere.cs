@@ -59,7 +59,6 @@ namespace Homework7._1
         public bool IsPointInside(double x, double y, double z)
         {
             distance = Math.Sqrt((x - _x) * (x - _x) + (y - _y) * (y - _y) + (z - _z) * (z - _z));
-            Console.WriteLine(distance);
             return distance < Radius;
         }
     }
