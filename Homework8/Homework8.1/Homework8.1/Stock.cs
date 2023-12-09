@@ -9,13 +9,23 @@
             products = new List<Product>();
         }
 
-        public void AddProduct(Product product)
+        public void AddProduct(Product newProduct)
         {
-            products.Add(product);
+            if (newProduct is null)
+            {
+                throw new ArgumentNullException(nameof(newProduct));
+            }
+
+            products.Add(newProduct);
         }
 
         public void RemoveProduct(Product product)
         {
+            if (product is null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+
             products.Remove(product);
         }
 
@@ -23,7 +33,7 @@
         {
             if (index >= 0 && index < products.Count)
             {
-                return products[index].ProductInformation();
+                return products[index].ToString();
             }
             return "Продукта с таким индексом на складе нет!";
         }
@@ -34,7 +44,7 @@
             {
                 if (product.ProductName == productName)
                 {
-                    return product.ProductInformation();
+                    return product.ToString();
                 }
             }
             return "Продукта с таким названием на складе нет!";
