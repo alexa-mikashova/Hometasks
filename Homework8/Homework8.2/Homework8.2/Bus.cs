@@ -2,74 +2,111 @@
 {
     public class Bus
     {
-        private int MaxNumberOfSeats = 3;
-        private double MaxSpeed = 65;
-        private double Speed = 0;
-        private List<string> passagers = new List<string>();
-        private Dictionary<int, string> seats = new Dictionary<int, string>();
-        private bool _freeSpaceFlag = true;
+        private double _maxSpeed;
+        private int _maxNumberOfSeats;
+        private double _speed;
+
+        public double Speed
+        {
+            get { return _speed; }
+            set
+            {
+                _speed = Math.Min(Math.Max(value, 0), _maxSpeed);
+            }
+        }
+
+        public double MaxSpeed
+        {
+            get { return _maxSpeed; }
+            set
+            {
+                if (value > 0)
+                {
+                    _maxSpeed = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Введено значение меньше нуля", nameof(value));
+                }
+            }
+        }
+
+        public int MaxNumberOfSeats
+        {
+            get { return _maxNumberOfSeats; }
+            set
+            {
+                if (value > 0)
+                {
+                    _maxNumberOfSeats = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Введено значение меньше нуля", nameof(value));
+                }
+            }
+        }
+
+        public bool HasEmptySeats { get; set; }
+
+        public List<string> Passangers { get; set; }
+
+        public Dictionary<string, string> Seats { get; set; }
+        public Bus(double maxSpeed, int maxNumberOfSeats)
+        {
+            MaxSpeed = maxSpeed;
+            MaxNumberOfSeats = maxNumberOfSeats;
+            Speed = 0;
+            HasEmptySeats = true;
+            Passangers = new List<string>();
+            Seats = new Dictionary<string, string>();
+        }
 
         public string BoardingPassengers(params string[] people)
         {
             foreach (var person in people)
             {
-                if (passagers.Count < MaxNumberOfSeats)
+                if (Passangers.Count < MaxNumberOfSeats)
                 {
-                    passagers.Add(person);
-                    seats.Add(seats.Count, person);
+                    Passangers.Add(person);
+                    Seats.Add(person, person);
                 }
                 else
                 {
-                    _freeSpaceFlag = false;
+                    HasEmptySeats = false;
                     break;
                 }
             }
-            return $"В автобус на остановке сели: {string.Join(", ", passagers)}";
+            return $"В автобус на остановке сели: {string.Join(", ", Passangers)}";
         }
 
         public string PassengerDisembarkation(params string[] peopleOutside)
         {
             foreach (var person in peopleOutside)
             {
-                passagers.Remove(person);
-                foreach (var seat in seats)
+                Passangers.Remove(person);
+                foreach (var seat in Seats)
                 {
                     if (person == seat.Value)
                     {
-                        seats.Remove(seat.Key);
+                        Seats.Remove(seat.Key);
                         break;
                     }
                 }
             }
-            return $"После остановки в автобусе остались: {string.Join(", ", passagers)}";
+            return $"После остановки в автобусе остались: {string.Join(", ", Passangers)}";
         }
 
         public string SpeedIncrease(double accelerate)
         {
             Speed += accelerate;
-            if (Speed > MaxSpeed)
-            {
-                Speed = MaxSpeed;
-                return $"Скорость увеличена до максимума = {MaxSpeed} км/ч";
-            }
-            else
-            {
-                return $"Увеличенная скорость = {Speed} км/ч";
-            }
+            return $"Cкорость автобуса после увеличения = {Speed}";
         }
 
         public string SpeedReduction(double decrease)
         {
             Speed -= decrease;
-            if (Speed < 0)
-            {
-                Speed = 0;
-                return $"Скорость уменьшена до минимума = 0 км/ч";
-            }
-            else
-            {
-                return $"Уменьшенная скорость = {Speed} км/ч";
-            }
+            return $"Cкорость автобуса после уменьшения = {Speed}";
         }
     }
 }
