@@ -27,9 +27,11 @@
             {
                 case "nectar":
                     _elephantPart = Math.Max(0, _elephantPart - value);
+                    _beePart = Math.Min(100, _beePart + value);
                     return $"Часть пчелы - {_beePart}, часть слона - {_elephantPart}";
                 case "grass":
-                    _beePart = Math.Min(100, _beePart + value);
+                    _beePart = Math.Max(0, _beePart - value);
+                    _elephantPart = Math.Min(100, _elephantPart + value);
                     return $"Часть пчелы - {_beePart}, часть слона - {_elephantPart}";
                 default:
                     return "meal is not nectar or grass";
