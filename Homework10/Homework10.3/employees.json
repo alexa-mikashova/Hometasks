@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "John Smith",
+    "Birthday": "02.10.1990",
+    "Height": 175,
+    "Weight": 76.5,
+    "Car": true,
+    "Languages": [ "C++", "Python" ]
+  },
+  {
+    "Name": "Alexey Alexeev",
+    "Birthday": "05.06.1986",
+    "Height": 197,
+    "Weight": 101.2,
+    "Car": false,
+    "Languages": [ "Pascal", "Delphi" ]
+  },
+  {
+    "Name": "Maria Ivanova",
+    "Birthday": "28.08.1998",
+    "Height": 165,
+    "Weight": 56.1,
+    "Car": true,
+    "Languages": [ "C#", "C++", "C" ]
+  }
+]
